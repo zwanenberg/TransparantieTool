@@ -4,6 +4,6 @@ Zwanenberg Food Group requires from all meat suppliers to publish their transpar
 In the situation that fTrace cannot be used, Zwanenberg can receive the transparancy information via a direct connection.
 
 For every delivery to a Zwanenberg plant you need to upload one XML file with the requested information.
-Upload can via sFTP. Information about sFTP will be provided to you after both parties have agreed about using this method.
+You can upload via sFTP. Information about sFTP connection will be provided to you after both parties have agreed about using this method.
 
 The XML will be validated to the XSD. 
