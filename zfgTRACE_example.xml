@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zfgTrace>	
+	<supplier>
+		<id>08710265000001</id>
+		<name>Meat Supplier A</name>
+		<county>Putten</county>
+		<municipality></municipality>
+		<state>Gelderland</state>
+		<country>NL</country>
+		<reference></reference>
+		<date>20210210T092315+00:00</date>
+	</supplier>
+	<receiver>
+		<id>08710581000017</id>
+		<name>Zwanenberg Food Group</name>
+	</receiver>
+	<products>
+		<product>
+			<id>08710265401024</id>
+			<name>Ha-Oberschenkel 100-130 HKL A 10Kg</name>
+			<batches>
+				<batch>
+					<id>00000004421041</id>
+					<weightkg>1005</weightkg>
+					<origins>
+						<origin>
+							<id>01234567890123</id>
+							<name>Boerderij De Koe</name>
+							<county>Hengelo</county>
+							<municipality></municipality>
+							<state>Gelderland</state>
+							<country>NL</country>
+							<rank></rank>
+							<percentage>100.0</percentage>
+						</origin>
+					</origins>
+					<slaughterings>
+						<slaughtering>
+							<date>20210209T092315+00:00</date>
+							<id>08710265000005</id>
+							<eg>NL5016</eg>
+							<name>Slachthuis B</name>
+							<county>Amsterdam</county>
+							<municipality></municipality>
+							<state>Noord Holland</state>
+							<country>NL</country>
+							<product>
+								<id>08710265172061</id>
+								<lot>4421041</lot>
+								<name>172061 Naakt L vrs 8x1500 ds Halal</name>
+							</product>
+						</slaughtering>
+					</slaughterings>
+					<splittings>
+						<splitting>
+							<date>20210209T122315+00:00</date>
+							<id>08710265000005</id>
+							<name>Slachthuis B</name>
+							<county>Amsterdam</county>
+							<municipality></municipality>
+							<state>Noord Holland</state>
+							<country>NL</country>
+							<input>
+								<id>08710265172061</id>					
+								<lot>4421041</lot>
+								<name>172061 Naakt L vrs 8x1500 ds Halal</name>
+							</input>
+							<output>
+								<id>08710265401024</id>					
+								<lot>4421041</lot>
+								<name>401024 Hä-Oberschenkel 100-120 HKL A 10Kg</name>
+							</output>
+						</splitting>
+					</splittings>
+					<handovers>
+						<handover>
+							<sender>
+								<id></id>
+								<name></name>
+								<county></county>
+								<municipality></municipality>
+								<state></state>
+								<country></country>
+								<reference></reference>
+								<date></date>
+							</sender>
+							<receiver>
+								<id></id>
+								<name></name>
+							</receiver>
+							<product>
+								<id></id>
+								<name></name>
+							</product>
+						</handover>
+					</handovers>
+				</batch>
+			</batches>
+		</product>
+	</products>
+</zfgTrace>
