@@ -1,0 +1,774 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="zfgTrace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="supplier" minOccurs="1">
+		  <xs:annotation>
+		    <xs:documentation xml:lang="en">
+			-= REQUIRED =-
+		    The shipment supplier. 
+			The supplier is the party that supplies the product to Zwanenberg Food Group.
+		    </xs:documentation>
+		  </xs:annotation>	
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id">
+		        <xs:annotation>
+		          <xs:documentation xml:lang="en">
+				  -= REQUIRED =-
+		          The suppliers Global Location Number (GLN).
+			      The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+		          </xs:documentation>
+		        </xs:annotation>				  
+                <xs:simpleType>
+                  <xs:restriction base="xs:integer">
+                    <xs:pattern value="[0-9]{14}"/>
+                    <xs:totalDigits value="14" fixed="true"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name">
+		        <xs:annotation>
+		          <xs:documentation xml:lang="en">
+				  -= REQUIRED =-
+		          The suppliers business name.
+		          </xs:documentation>
+		        </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:minLength value="2"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element type="xs:string" name="county"/>
+              <xs:element type="xs:string" name="municipality"/>
+              <xs:element type="xs:string" name="state" />
+              <xs:element name="country">
+		        <xs:annotation>
+		          <xs:documentation xml:lang="en">
+				  -= REQUIRED =-
+		          The country where the supplier is located.
+				  ISO 3166 Alpha-2 code.
+		          </xs:documentation>
+		        </xs:annotation>			  
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[a-zA-Z][a-zA-Z]"/>
+                    <xs:minLength value="2"/>
+                    <xs:maxLength value="2"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element type="xs:string" name="reference"/>
+              <xs:element name="date">
+		        <xs:annotation>
+		          <xs:documentation xml:lang="en">
+				  -= REQUIRED =-
+		          The shipping date in UTC format.
+				  yyyymmddThhmmsszzzzzz
+				  zzzzzz represents the timezone +01:00 or -05:00
+				  March, 4th 2021 at 3:54pm in Amsterdam = 20210304T155400+01:00
+		          </xs:documentation>
+		        </xs:annotation>			  			  
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[0-9]{8}[T][0-9]{6}[+-][0-9][0-9][:][0-9][0-9]"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="receiver" minOccurs="1">
+		  <xs:annotation>
+		    <xs:documentation xml:lang="en">
+			-= REQUIRED =-
+		    The receiver of the shipment.
+			Zwanenberg Food Group is the receiver.
+		    </xs:documentation>
+		  </xs:annotation>			
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id">
+		        <xs:annotation>
+		          <xs:documentation xml:lang="en">
+				  -= REQUIRED =-
+		          Zwanenberg Food Groups Global Location Number (GLN).
+			      The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+		          </xs:documentation>
+		        </xs:annotation>				  
+                <xs:simpleType>
+                  <xs:restriction base="xs:integer">
+                    <xs:pattern value="[0-9]{14}"/>
+                    <xs:totalDigits value="14" fixed="true"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name">
+		        <xs:annotation>
+		          <xs:documentation xml:lang="en">
+				  -= REQUIRED =-
+		          The suppliers business name.
+		          </xs:documentation>
+		        </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:minLength value="2"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="products" minOccurs="1">
+		  <xs:annotation>
+		    <xs:documentation xml:lang="en">
+			  -= REQUIRED =-
+		      The product(s) contained in the shipment.
+			  The shipment contains at least one product, but can contain more products.
+			  For each product the element product is required.
+		    </xs:documentation>
+		  </xs:annotation>				
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="product" minOccurs="1">
+		        <xs:annotation>
+		          <xs:documentation xml:lang="en">
+			        -= REQUIRED =-
+		            The product supplied.
+		          </xs:documentation>
+		        </xs:annotation>					  
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id">
+		              <xs:annotation>
+		                <xs:documentation xml:lang="en">
+				        -= REQUIRED =-
+		                The Globel Trade Item Number (GTIN) for the product supplied.
+			            The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+		                </xs:documentation>
+		              </xs:annotation>				  					
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                          <xs:pattern value="[0-9]{14}"/>
+                          <xs:totalDigits value="14" fixed="true"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="name">
+		              <xs:annotation>
+		                <xs:documentation xml:lang="en">
+				        -= REQUIRED =-
+		                The product name.
+		                </xs:documentation>
+		              </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="2"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="batches" minOccurs="1">
+		              <xs:annotation>
+		                <xs:documentation xml:lang="en">
+			              -= REQUIRED =-
+		                  The batch(es) contained in the product.
+			              The product contains at least one batch, but can contain more batches.
+						  A seperate batch element is required for each production date.
+			              For each batch the element batch is required.
+		                </xs:documentation>
+		              </xs:annotation>							
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="batch" minOccurs="1">
+		                    <xs:annotation>
+		                      <xs:documentation xml:lang="en">
+			                    -= REQUIRED =-
+						        A batch can only contain one production date.
+		                      </xs:documentation>
+		                    </xs:annotation>													  
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="id">
+		                          <xs:annotation>
+		                            <xs:documentation xml:lang="en">
+				                    -= REQUIRED =-
+		                            Unique batch identification number/code.
+		                            </xs:documentation>
+		                          </xs:annotation>				  													
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:minLength value="2"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element type="xs:string" name="weightkg"/>
+                                <xs:element name="origins" minOccurs="1">
+		                          <xs:annotation>
+		                            <xs:documentation xml:lang="en">
+			                          -= REQUIRED =-
+		                              A batch must have at least one origin.
+									  An origin is a livestock farm which supplied the cattle to the slaugherhouse.
+		                            </xs:documentation>
+		                          </xs:annotation>								
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="origin" minOccurs="1">
+		                                <xs:annotation>
+		                                  <xs:documentation xml:lang="en">
+			                                -= REQUIRED =-
+						                    The livestock farm which supplied the cattle to the slaughterhouse.
+		                                  </xs:documentation>
+		                                </xs:annotation>										  
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="id">
+		        		        		      <xs:annotation>
+		          		        		        <xs:documentation xml:lang="en">
+				  		        		        -= REQUIRED =-
+		          		        		        The Global Location Number (GLN) of the live stock farmer.
+			      		        		        The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+		          		        		        </xs:documentation>
+		        		        		      </xs:annotation>														
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:integer">
+                                                  <xs:pattern value="[0-9]{14}"/>
+                                                  <xs:totalDigits value="14" fixed="true"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element name="name">
+		        		        		      <xs:annotation>
+		        		        		        <xs:documentation xml:lang="en">
+		        		        		          -= REQUIRED =-
+		        		        		          The livestock farmers business name.
+		        		        		          </xs:documentation>
+		        		        		        </xs:annotation>
+		        		        		        <xs:simpleType>
+		        		        		          <xs:restriction base="xs:string">
+		        		        		          <xs:minLength value="2"/>
+		        		        		        </xs:restriction>
+		        		        		      </xs:simpleType>
+		        		        		    </xs:element>
+                                            <xs:element type="xs:string" name="county"/>
+                                            <xs:element type="xs:string" name="municipality"/>
+                                            <xs:element type="xs:string" name="state" />
+                                            <xs:element name="country">
+		        		        		      <xs:annotation>
+		        		        		        <xs:documentation xml:lang="en">
+		        		        		        -= REQUIRED =-
+		        		        		        The country where the livestock farmer is located.	
+												ISO 3166 Alpha-2 code.												
+		        		        		        </xs:documentation>
+		        		        		      </xs:annotation>											
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:pattern value="[a-zA-Z][a-zA-Z]"/>
+                                                  <xs:minLength value="2"/>
+                                                  <xs:maxLength value="2"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element name="rank">
+		        		        		      <xs:annotation>
+		        		        		        <xs:documentation xml:lang="en">
+		        		        		        The ranking for the livestock farmers contribution to the batch.
+												Starting with 1.
+												From biggest contributor to lowest contributor.
+		        		        		        </xs:documentation>
+		        		        		      </xs:annotation>
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:pattern value="([0-9]{3})?"/>
+                                                  <xs:minLength value="0"/>
+                                                  <xs:maxLength value="3"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>											  
+											</xs:element>  
+                                            <xs:element name="percentage">
+		        		        		      <xs:annotation>
+		        		        		        <xs:documentation xml:lang="en">
+												-= REQUIRED =-
+		        		        		        The percentage the livestock farmer contributed to the whole batch.
+												Decimal number with one decimal.
+		        		        		        </xs:documentation>
+		        		        		      </xs:annotation>
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:decimal">
+                                                  <xs:pattern value="[0-9]{3}[.][0-9]"/>
+                                                  <xs:minExclusive value="0"/>
+                                                  <xs:maxInclusive value="100"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>											
+											</xs:element>  
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="slaughterings" minOccurs="1">							
+                                  <xs:annotation>
+                                    <xs:documentation>
+									-= REQUIRED =-
+									Slaughterhouses.
+									</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="slaughtering" minOccurs="1">
+		        		                <xs:annotation>
+								          <xs:documentation xml:lang="en">
+									      -= REQUIRED =-
+		        		        	      The slaughterhouse where the cattle for the batch has been slaughtered.
+		        		        	      </xs:documentation>
+		        		                </xs:annotation>										  
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="date">
+		        		        		      <xs:annotation>
+		        		        		        <xs:documentation xml:lang="en">
+		        		        		        -= REQUIRED =-
+		        		        		        The slaughter date in UTC format.
+		        		        		        yyyymmddThhmmsszzzzzz
+		        		        		        zzzzzz represents the timezone +01:00 or -05:00
+		        		        		        March, 4th 2021 at 3:54pm in Amsterdam = 20210304T155400+01:00
+		        		        		        </xs:documentation>
+		        		        		      </xs:annotation>													
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:pattern value="[0-9]{8}[T][0-9]{6}[+-][0-9][0-9][:][0-9][0-9]"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element name="id">
+		        		        		      <xs:annotation>
+		          		        		        <xs:documentation xml:lang="en">
+				  		        		        -= REQUIRED =-
+		          		        		        The Global Trade Item Number (GTIN) for the product slaughtered.
+			      		        		        The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+		          		        		        </xs:documentation>
+		        		        		      </xs:annotation>														
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:integer">
+                                                  <xs:pattern value="[0-9]{14}"/>
+                                                  <xs:totalDigits value="14" fixed="true"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>											
+                                            <xs:element name="eg">
+		        		        		      <xs:annotation>
+		          		        		        <xs:documentation xml:lang="en">
+				  		        		        -= REQUIRED =-
+		          		        		        The EG number of the slaughterhouse.
+			      		        		        The EG number starts with two capital letters representing the country.
+		          		        		        </xs:documentation>
+		        		        		      </xs:annotation>											
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:pattern value="[A-Z][A-Z].*"/>
+												  <xs:minLength value="2"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>											  
+											</xs:element>											
+                                            <xs:element name="name">
+		        		        		      <xs:annotation>
+		          		        		        <xs:documentation xml:lang="en">
+				  		        		        -= REQUIRED =-
+		          		        		        The name of the slaughterhouse.
+		          		        		        </xs:documentation>
+		        		        		      </xs:annotation>											
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+												  <xs:minLength value="2"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>											  											
+											</xs:element>											
+                                            <xs:element type="xs:string" name="county"/>
+                                            <xs:element type="xs:string" name="municipality"/>
+                                            <xs:element type="xs:string" name="state" />
+                                            <xs:element name="country">
+		        		        		      <xs:annotation>
+		          		        		        <xs:documentation xml:lang="en">
+				  		        		        -= REQUIRED =-
+		          		        		        The country where the slaugtherhouse is located.
+				  		        		        ISO 3166 Alpha-2 code.
+		          		        		        </xs:documentation>
+		        		        		      </xs:annotation>			  											
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:pattern value="[a-zA-Z][a-zA-Z]"/>
+                                                    <xs:minLength value="2"/>
+                                                    <xs:maxLength value="2"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element name="product" minOccurs="1">
+											  <xs:annotation>
+		          		        		        <xs:documentation xml:lang="en">
+				  		        		        -= REQUIRED =-
+		          		        		        The product that has been slaughtered.
+		          		        		        </xs:documentation>
+		        		        		      </xs:annotation>			  
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="id">
+												    <xs:annotation>
+		              		              		      <xs:documentation xml:lang="en">
+		              		              		      -= REQUIRED =-
+		              		              		      The Globel Trade Item Number (GTIN) for the product slaughtered.
+		              		              		      The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+		              		              		      </xs:documentation>
+		              		              		    </xs:annotation>
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:integer">
+                                                        <xs:pattern value="[0-9]{14}"/>
+                                                        <xs:totalDigits value="14" fixed="true"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element name="lot">
+		        		        		            <xs:annotation>
+		          		        		              <xs:documentation xml:lang="en">
+				  		        		              -= REQUIRED =-
+		          		        		              Unique lot number/code for the product slaughtered.
+		          		        		              </xs:documentation>
+		        		        		            </xs:annotation>											
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+												        <xs:minLength value="2"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>												  
+												  </xs:element>
+                                                  <xs:element name="name">
+		        		        		            <xs:annotation>
+		          		        		              <xs:documentation xml:lang="en">
+				  		        		              -= REQUIRED =-
+		          		        		              Name for the product slaughtered.
+		          		        		              </xs:documentation>
+		        		        		            </xs:annotation>											
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+												        <xs:minLength value="2"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>												  
+												  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="splittings" minOccurs="0">
+								  <xs:annotation>
+								    <xs:documentation xml:lang="en">
+								    For each splitting event you can supply the splitting details.
+								    </xs:documentation>
+								  </xs:annotation>								
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="splitting" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="date">
+		        		        		      <xs:annotation>
+		          		        		        <xs:documentation xml:lang="en">
+		          		        		        The shipping date in UTC format.
+				  		        		        yyyymmddThhmmsszzzzzz
+				  		        		        zzzzzz represents the timezone +01:00 or -05:00
+				  		        		        March, 4th 2021 at 3:54pm in Amsterdam = 20210304T155400+01:00
+		        		                        </xs:documentation>
+		        		        		      </xs:annotation>												
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:pattern value="([0-9]{8}[T][0-9]{6}[+-][0-9][0-9][:][0-9][0-9])?"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element name="id">
+		        		        		      <xs:annotation>
+		          		        		        <xs:documentation xml:lang="en">
+		          		        		        The Global Location Number (GLN) where the splitting event took place.
+			      		        		        The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+		          		        		        </xs:documentation>
+		        		        		      </xs:annotation>									  											
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:integer">
+                                                  <xs:pattern value="([0-9]{14})?"/>
+                                                  <xs:totalDigits value="14" fixed="true"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element type="xs:string" name="name">
+											  <xs:annotation>
+												<xs:documentation xml:lang="en">
+												The business name of the splitter.
+											    </xs:documentation>
+											  </xs:annotation>														
+											</xs:element>				
+                                            <xs:element type="xs:string" name="county"/>
+                                            <xs:element type="xs:string" name="municipality"/>
+                                            <xs:element type="xs:string" name="state" />
+                                            <xs:element name="country">
+											  <xs:annotation>
+												<xs:documentation xml:lang="en">
+												The country where the splitter is located.
+											    </xs:documentation>
+											  </xs:annotation>														
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:pattern value="([a-zA-Z][a-zA-Z])?"/>
+                                                    <xs:minLength value="2"/>
+                                                    <xs:maxLength value="2"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element name="input">
+  											  <xs:annotation>
+											    <xs:documentation xml:lang="en">
+											    The product that has been split (incoming product).
+											    </xs:documentation>
+											  </xs:annotation>											
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="id">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The Globel Trade Item Number (GTIN) for the product before splitting.
+													  The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+													  </xs:documentation>
+													</xs:annotation>												  
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:integer">
+                                                        <xs:pattern value="([0-9]{14})?"/>
+                                                        <xs:totalDigits value="14" fixed="true"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element type="xs:string" name="lot">
+		        		        		            <xs:annotation>
+		          		        		              <xs:documentation xml:lang="en">
+		          		        		              Unique lot number/code for the incoming product.
+		          		        		              </xs:documentation>
+		        		        		            </xs:annotation>															  
+												  </xs:element>	
+                                                  <xs:element type="xs:string" name="name">
+		        		        		            <xs:annotation>
+		          		        		              <xs:documentation xml:lang="en">
+		          		        		              Name for the incoming product.
+		          		        		              </xs:documentation>
+		        		        		            </xs:annotation>															  
+												  </xs:element>													  
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="output">
+  											  <xs:annotation>
+											    <xs:documentation xml:lang="en">
+											    The product that is the result of the splitting event (outgoing product).
+											    </xs:documentation>
+											  </xs:annotation>														
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="id">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The Globel Trade Item Number (GTIN) for the product after splitting.
+													  The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+													  </xs:documentation>
+													</xs:annotation>													  
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:integer">
+                                                        <xs:pattern value="([0-9]{14})?"/>
+                                                        <xs:totalDigits value="14" fixed="true"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element type="xs:string" name="lot">
+		        		        		            <xs:annotation>
+		          		        		              <xs:documentation xml:lang="en">
+		          		        		              Unique lot number/code for the outgoing product.
+		          		        		              </xs:documentation>
+		        		        		            </xs:annotation>															  
+												  </xs:element>	
+                                                  <xs:element type="xs:string" name="name">
+		        		        		            <xs:annotation>
+		          		        		              <xs:documentation xml:lang="en">
+		          		        		              Name for the outgoing product.
+		          		        		              </xs:documentation>
+		        		        		            </xs:annotation>															  
+												  </xs:element>			
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="handovers" minOccurs="0">
+								  <xs:annotation>
+								    <xs:documentation xml:lang="en">
+								    For each handover event you can supply the handover details.
+									A handover occurs when a product is been transported from one GLN to another GLN before it is shipped to the customer (Zwanenberg Food Group).
+								    </xs:documentation>
+								  </xs:annotation>												
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="handover" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="sender" minOccurs="1">
+											  <xs:annotation>
+												<xs:documentation xml:lang="en">
+												The sender.
+												</xs:documentation>
+											  </xs:annotation>																							
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="id">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The Global Location Number (GLN) of the sender for the handover.
+													  The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+													  </xs:documentation>
+													</xs:annotation>														  
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+                                                        <xs:pattern value="([0-9]{14})?"/>
+                                                        <xs:maxLength value="14"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element type="xs:string" name="name">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The business name of sender.
+													  </xs:documentation>
+													</xs:annotation>														
+												  </xs:element>				
+                                                  <xs:element type="xs:string" name="county"/>
+                                                  <xs:element type="xs:string" name="municipality"/>
+                                                  <xs:element type="xs:string" name="state" />
+                                                  <xs:element name="country">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The country where the sender is located.
+													  </xs:documentation>
+													</xs:annotation>															  
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+                                                        <xs:pattern value="([a-zA-Z][a-zA-Z])?"/>
+                                                        <xs:maxLength value="2"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element type="xs:string" name="reference">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  Unique reference number for the handover.
+													  </xs:documentation>
+													</xs:annotation>															  												  
+												  </xs:element>													
+                                                  <xs:element name="date">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The send date for the handover.
+													  </xs:documentation>
+													</xs:annotation>															  												  
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+                                                        <xs:pattern value="([0-9]{8}[T][0-9]{6}[+-][0-9][0-9][:][0-9][0-9])?"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="receiver" minOccurs="1">
+											  <xs:annotation>
+												<xs:documentation xml:lang="en">
+												The receiver.
+												</xs:documentation>
+											  </xs:annotation>													
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="id">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The Global Location Number (GLN) of the receiver for the handover.
+													  The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+													  </xs:documentation>
+													</xs:annotation>												  
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+                                                        <xs:pattern value="([0-9]{14})?"/>
+                                                        <xs:maxLength value="14"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element type="xs:string" name="name">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The business name of receiver.
+													  </xs:documentation>
+													</xs:annotation>														
+												  </xs:element>				
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="product" minOccurs="1">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="id">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The Globel Trade Item Number (GTIN) for the product handed over.
+													  The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+													  </xs:documentation>
+													</xs:annotation>														  
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+                                                        <xs:pattern value="([0-9]{14})?"/>
+                                                        <xs:maxLength value="14"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element type="xs:string" name="name">
+													<xs:annotation>
+													  <xs:documentation xml:lang="en">
+													  The name of the product.
+													  </xs:documentation>
+													</xs:annotation>														
+												  </xs:element>				
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
