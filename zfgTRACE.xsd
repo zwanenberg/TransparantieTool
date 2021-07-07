@@ -363,6 +363,7 @@
 				  		        		        -= REQUIRED =-
 		          		        		        The EG number of the slaughterhouse.
 			      		        		        The EG number starts with two capital letters representing the country.
+												See https://ec.europa.eu/food/food/biological-safety/food-hygiene/approved-eu-food-establishments_en
 		          		        		        </xs:documentation>
 		        		        		      </xs:annotation>											
                                               <xs:simpleType>
