@@ -23,7 +23,7 @@
 		        </xs:annotation>				  
                 <xs:simpleType>
                   <xs:restriction base="xs:integer">
-                    <xs:pattern value="[0-9]{14}"/>
+                    <xs:pattern value="[0-9]{13,14}"/>
                     <xs:totalDigits value="14" fixed="true"/>
                   </xs:restriction>
                 </xs:simpleType>
@@ -100,7 +100,7 @@
 		        </xs:annotation>				  
                 <xs:simpleType>
                   <xs:restriction base="xs:integer">
-                    <xs:pattern value="[0-9]{14}"/>
+                    <xs:pattern value="[0-9]{13,14}"/>
                     <xs:totalDigits value="14" fixed="true"/>
                   </xs:restriction>
                 </xs:simpleType>
@@ -131,7 +131,7 @@
 		    </xs:documentation>
 		  </xs:annotation>				
           <xs:complexType>
-            <xs:sequence>
+            <xs:choice maxOccurs="unbounded" minOccurs="1">
               <xs:element name="product" minOccurs="1">
 		        <xs:annotation>
 		          <xs:documentation xml:lang="en">
@@ -180,7 +180,7 @@
 		                </xs:documentation>
 		              </xs:annotation>							
                       <xs:complexType>
-                        <xs:sequence>
+                        <xs:choice maxOccurs="unbounded" minOccurs="1">
                           <xs:element name="batch" minOccurs="1">
 		                    <xs:annotation>
 		                      <xs:documentation xml:lang="en">
@@ -213,7 +213,7 @@
 		                            </xs:documentation>
 		                          </xs:annotation>								
                                   <xs:complexType>
-                                    <xs:sequence>
+                                    <xs:choice maxOccurs="unbounded" minOccurs="1">
                                       <xs:element name="origin" minOccurs="1">
 		                                <xs:annotation>
 		                                  <xs:documentation xml:lang="en">
@@ -233,7 +233,7 @@
 		        		        		      </xs:annotation>														
                                               <xs:simpleType>
                                                 <xs:restriction base="xs:integer">
-                                                  <xs:pattern value="[0-9]{14}"/>
+                                                  <xs:pattern value="[0-9]{13,14}"/>
                                                   <xs:totalDigits value="14" fixed="true"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
@@ -305,7 +305,7 @@
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
-                                    </xs:sequence>
+                                    </xs:choice>
                                   </xs:complexType>
                                 </xs:element>
                                 <xs:element name="slaughterings" minOccurs="1">							
@@ -316,7 +316,7 @@
 									</xs:documentation>
                                   </xs:annotation>
                                   <xs:complexType>
-                                    <xs:sequence>
+                                    <xs:choice maxOccurs="unbounded" minOccurs="1">
                                       <xs:element name="slaughtering" minOccurs="1">
 		        		                <xs:annotation>
 								          <xs:documentation xml:lang="en">
@@ -461,7 +461,7 @@
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
-                                    </xs:sequence>
+                                    </xs:choice>
                                   </xs:complexType>
                                 </xs:element>
                                 <xs:element name="splittings" minOccurs="0">
@@ -471,7 +471,7 @@
 								    </xs:documentation>
 								  </xs:annotation>								
                                   <xs:complexType>
-                                    <xs:sequence>
+                                    <xs:choice maxOccurs="unbounded" minOccurs="1">
                                       <xs:element name="splitting" minOccurs="0">
                                         <xs:complexType>
                                           <xs:sequence>
@@ -499,7 +499,7 @@
 		        		        		      </xs:annotation>									  											
                                               <xs:simpleType>
                                                 <xs:restriction base="xs:integer">
-                                                  <xs:pattern value="([0-9]{14})?"/>
+                                                  <xs:pattern value="([0-9]{13,14})?"/>
                                                   <xs:totalDigits value="14" fixed="true"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
@@ -609,7 +609,7 @@
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
-                                    </xs:sequence>
+                                    </xs:choice>
                                   </xs:complexType>
                                 </xs:element>
                                 <xs:element name="handovers" minOccurs="0">
@@ -620,7 +620,7 @@
 								    </xs:documentation>
 								  </xs:annotation>												
                                   <xs:complexType>
-                                    <xs:sequence>
+                                    <xs:choice maxOccurs="unbounded" minOccurs="0">
                                       <xs:element name="handover" minOccurs="0">
                                         <xs:complexType>
                                           <xs:sequence>
@@ -641,7 +641,7 @@
 													</xs:annotation>														  
                                                     <xs:simpleType>
                                                       <xs:restriction base="xs:string">
-                                                        <xs:pattern value="([0-9]{14})?"/>
+                                                        <xs:pattern value="([0-9]{13,14})?"/>
                                                         <xs:maxLength value="14"/>
                                                       </xs:restriction>
                                                     </xs:simpleType>
@@ -708,7 +708,7 @@
 													</xs:annotation>												  
                                                     <xs:simpleType>
                                                       <xs:restriction base="xs:string">
-                                                        <xs:pattern value="([0-9]{14})?"/>
+                                                        <xs:pattern value="([0-9]{13,14})?"/>
                                                         <xs:maxLength value="14"/>
                                                       </xs:restriction>
                                                     </xs:simpleType>
@@ -753,19 +753,19 @@
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
-                                    </xs:sequence>
+                                    </xs:choice>
                                   </xs:complexType>
                                 </xs:element>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                        </xs:sequence>
+                        </xs:choice>
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
-            </xs:sequence>
+            </xs:choice>
           </xs:complexType>
         </xs:element>
       </xs:sequence>
