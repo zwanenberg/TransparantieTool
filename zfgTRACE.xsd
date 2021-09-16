@@ -18,13 +18,12 @@
 		          <xs:documentation xml:lang="en">
 				  -= REQUIRED =-
 		          The suppliers Global Location Number (GLN).
-			      The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+			      The GLN number consists of 14 digits. A 13 digit GLN may start with a zero to make it a 14 digit GLN.
 		          </xs:documentation>
 		        </xs:annotation>				  
                 <xs:simpleType>
                   <xs:restriction base="xs:integer">
                     <xs:pattern value="[0-9]{13,14}"/>
-                    <xs:totalDigits value="14" fixed="true"/>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -95,13 +94,12 @@
 		          <xs:documentation xml:lang="en">
 				  -= REQUIRED =-
 		          Zwanenberg Food Groups Global Location Number (GLN).
-			      The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+			      The GLN number consists of 13 or 14 digits. A 13 digit GLN may start with a zero to make it a 14 digit GLN.
 		          </xs:documentation>
 		        </xs:annotation>				  
                 <xs:simpleType>
                   <xs:restriction base="xs:integer">
                     <xs:pattern value="[0-9]{13,14}"/>
-                    <xs:totalDigits value="14" fixed="true"/>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -146,13 +144,12 @@
 		                <xs:documentation xml:lang="en">
 				        -= REQUIRED =-
 		                The Globel Trade Item Number (GTIN) for the product supplied.
-			            The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+			            The GTIN number consists of 13 or 14 digits. A 13 digit GTIN may start with a zero to make it a 14 digit GTIN.
 		                </xs:documentation>
 		              </xs:annotation>				  					
                       <xs:simpleType>
                         <xs:restriction base="xs:integer">
-                          <xs:pattern value="[0-9]{14}"/>
-                          <xs:totalDigits value="14" fixed="true"/>
+                          <xs:pattern value="[0-9]{13,14}"/>
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
@@ -228,13 +225,12 @@
 		          		        		        <xs:documentation xml:lang="en">
 				  		        		        -= REQUIRED =-
 		          		        		        The Global Location Number (GLN) of the live stock farmer.
-			      		        		        The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+			      		        		        The GLN number consists of 13 or 14 digits. A 13 digit GLN may start with a zero to make it a 14 digit GLN.
 		          		        		        </xs:documentation>
 		        		        		      </xs:annotation>														
                                               <xs:simpleType>
                                                 <xs:restriction base="xs:integer">
                                                   <xs:pattern value="[0-9]{13,14}"/>
-                                                  <xs:totalDigits value="14" fixed="true"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
@@ -347,13 +343,12 @@
 		          		        		        <xs:documentation xml:lang="en">
 				  		        		        -= REQUIRED =-
 		          		        		        The Global Trade Item Number (GTIN) for the product slaughtered.
-			      		        		        The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+			      		        		        The GTIN number consists of 13 or 14 digits. A 13 digit GTIN may start with a zero to make it a 14 digit GTIN.
 		          		        		        </xs:documentation>
 		        		        		      </xs:annotation>														
                                               <xs:simpleType>
                                                 <xs:restriction base="xs:integer">
-                                                  <xs:pattern value="[0-9]{14}"/>
-                                                  <xs:totalDigits value="14" fixed="true"/>
+                                                  <xs:pattern value="[0-9]{13,14}"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>											
@@ -419,13 +414,12 @@
 		              		              		      <xs:documentation xml:lang="en">
 		              		              		      -= REQUIRED =-
 		              		              		      The Globel Trade Item Number (GTIN) for the product slaughtered.
-		              		              		      The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+		              		              		      The GTIN number consists of 13 or 14 digits. A 13 digit GTIN may start with a zero to make it a 14 digit GTIN.
 		              		              		      </xs:documentation>
 		              		              		    </xs:annotation>
                                                     <xs:simpleType>
                                                       <xs:restriction base="xs:integer">
-                                                        <xs:pattern value="[0-9]{14}"/>
-                                                        <xs:totalDigits value="14" fixed="true"/>
+                                                        <xs:pattern value="[0-9]{13,14}"/>
                                                       </xs:restriction>
                                                     </xs:simpleType>
                                                   </xs:element>
@@ -494,13 +488,12 @@
 		        		        		      <xs:annotation>
 		          		        		        <xs:documentation xml:lang="en">
 		          		        		        The Global Location Number (GLN) where the splitting event took place.
-			      		        		        The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+			      		        		        The GLN number consists of 13 or 14 digits. A 13 digit GLN may start with a zero to make it a 14 digit GLN.
 		          		        		        </xs:documentation>
 		        		        		      </xs:annotation>									  											
                                               <xs:simpleType>
                                                 <xs:restriction base="xs:integer">
                                                   <xs:pattern value="([0-9]{13,14})?"/>
-                                                  <xs:totalDigits value="14" fixed="true"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
@@ -540,13 +533,12 @@
 													<xs:annotation>
 													  <xs:documentation xml:lang="en">
 													  The Globel Trade Item Number (GTIN) for the product before splitting.
-													  The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+													  The GTIN number consists of 13 or 14 digits. A 13 digit GTIN may start with a zero to make it a 14 digit GTIN.
 													  </xs:documentation>
 													</xs:annotation>												  
                                                     <xs:simpleType>
                                                       <xs:restriction base="xs:integer">
-                                                        <xs:pattern value="([0-9]{14})?"/>
-                                                        <xs:totalDigits value="14" fixed="true"/>
+                                                        <xs:pattern value="([0-9]{13,14})?"/>
                                                       </xs:restriction>
                                                     </xs:simpleType>
                                                   </xs:element>
@@ -579,13 +571,12 @@
 													<xs:annotation>
 													  <xs:documentation xml:lang="en">
 													  The Globel Trade Item Number (GTIN) for the product after splitting.
-													  The GTIN number consists of 14 digits. Use zero padding to the left if the GTIN number is less than 14 digits.
+													  The GTIN number consists of 13 or 14 digits. A 13 digit GTIN may start with a zero to make it a 14 digit GTIN.
 													  </xs:documentation>
 													</xs:annotation>													  
                                                     <xs:simpleType>
                                                       <xs:restriction base="xs:integer">
-                                                        <xs:pattern value="([0-9]{14})?"/>
-                                                        <xs:totalDigits value="14" fixed="true"/>
+                                                        <xs:pattern value="([0-9]{13,14})?"/>
                                                       </xs:restriction>
                                                     </xs:simpleType>
                                                   </xs:element>
@@ -636,7 +627,7 @@
 													<xs:annotation>
 													  <xs:documentation xml:lang="en">
 													  The Global Location Number (GLN) of the sender for the handover.
-													  The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+													  The GLN number consists of 14 digits. A 13 digit GLN may start with a zero to make it a 14 digit GLN.
 													  </xs:documentation>
 													</xs:annotation>														  
                                                     <xs:simpleType>
@@ -703,7 +694,7 @@
 													<xs:annotation>
 													  <xs:documentation xml:lang="en">
 													  The Global Location Number (GLN) of the receiver for the handover.
-													  The GLN number consists of 14 digits. Use zero padding to the left if the GLN number is less than 14 digits.
+													  The GLN number consists of 14 digits. A 13 digit GLN may start with a zero to make it a 14 digit GLN.
 													  </xs:documentation>
 													</xs:annotation>												  
                                                     <xs:simpleType>
