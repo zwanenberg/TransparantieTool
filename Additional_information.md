@@ -65,8 +65,13 @@ Specify the ORIGINS when the information is available. For now this information 
   
 Specify the SLAUGHTERINGS. The EG code is mandatory. Make sure to start it with the 2 letter country code. 
 See https://ec.europa.eu/food/food/biological-safety/food-hygiene/approved-eu-food-establishments_en
-  
 
-
+```  
+<eg>AT50145</eg>
+```
+	
+For now the information on SPLITTINGS and HANDOVERS are optional.
+	
+	
 
   
