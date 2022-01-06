@@ -14,6 +14,8 @@ The XML has the following structure
 - optional: one or more **SPLITTINGS** with internal procession steps
 - optional: one or more **HANDOVERS** with combining internal batches to the final batch
 
+ℹ️ also the XSD contains information for each tag
+
 
 ## Supplier
 ```
